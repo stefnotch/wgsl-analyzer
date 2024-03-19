@@ -9,10 +9,10 @@ hir = { path = "../hir" }
 hir_ty = { path = "../hir_ty" }
 hir_def = { path = "../hir_def" }
 syntax = { path = "../syntax" }
-always-assert = { version = "0.1.2", features = ["log"] }
-tracing = "0.1"
+always-assert = { version = "0.2", features = ["tracing"] }
+tracing = { workspace = true }
 
-text-edit = { git = "https://github.com/rust-analyzer/rust-analyzer", rev = "8a23314" }
-itertools = "0.10.1"
-either = "1.6.1"
-rowan = "0.15"
+text-edit = { workspace = true }
+itertools = "0.12"
+either = { workspace = true }
+rowan = { workspace = true }

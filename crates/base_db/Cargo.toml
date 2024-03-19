@@ -4,14 +4,14 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
-salsa = "0.17.0-pre.1"
-rowan = "0.15"
-rustc-hash = "1.1.0"
+salsa = { workspace = true }
+rowan = { workspace = true }
+rustc-hash = "1.1"
 syntax = { path = "../syntax" }
-tracing = "0.1"
-regex = { version = "1.5.4", default-features = false, features = ["std"] }
+tracing = { workspace = true }
+regex = { version = "1.10", default-features = false, features = ["std"] }
 
-vfs = { git = "https://github.com/rust-analyzer/rust-analyzer", rev = "8a23314" }
+vfs = { workspace = true }
 
 [dev-dependencies]
-pretty_assertions = "1.2.1"
+pretty_assertions = "1.4"

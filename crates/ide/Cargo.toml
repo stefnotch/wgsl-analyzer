@@ -4,8 +4,8 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
-salsa = "0.17.0-pre.1"
-tracing = "0.1.29"
+salsa = { workspace = true }
+tracing = { workspace = true }
 
 base_db = { path = "../base_db" }
 hir_def = { path = "../hir_def" }
@@ -14,13 +14,13 @@ hir = { path = "../hir" }
 ide_completion = { path = "../ide_completion" }
 syntax = { path = "../syntax" }
 wgsl_formatter = { path = "../wgsl_formatter" }
-rowan = "0.15"
-lsp-types = "0.93.0"
-vfs = { git = "https://github.com/rust-analyzer/rust-analyzer", rev = "8a23314" }
+rowan = { workspace = true }
+lsp-types = "0.95"
+vfs = { workspace = true }
 
-expect-test = "1.1.0"
-itertools = "0.10.1"
-smol_str = "0.1.21"
+expect-test = "1.4"
+itertools = "0.12"
+smol_str = "0.2"
 
 naga11 = { package = "naga", version = "0.11", features = [
   "wgsl-in",
@@ -42,5 +42,7 @@ naga14 = { package = "naga", version = "0.14", features = [
   "validate",
   "span",
 ] }
-naga19 = { package = "naga", version = "0.19", features = [ "wgsl-in" ] }
-nagamain = { package = "naga", git = "https://github.com/gfx-rs/wgpu", rev = "152a94bc6c502226d9871f28e35db0b755ea35bf", features = [ "wgsl-in" ] }
+naga19 = { package = "naga", version = "0.19", features = ["wgsl-in"] }
+nagamain = { package = "naga", git = "https://github.com/gfx-rs/wgpu", rev = "152a94bc6c502226d9871f28e35db0b755ea35bf", features = [
+  "wgsl-in",
+] }

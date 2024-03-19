@@ -2,6 +2,16 @@
 resolver = "2"
 members = ["crates/*", "tools"]
 
+[workspace.dependencies]
+either = "1.10"
+la-arena = { git = "https://github.com/rust-analyzer/rust-analyzer", rev = "8a23314" }
+paths = { git = "https://github.com/rust-analyzer/rust-analyzer", rev = "8a23314" }
+rowan = "0.15"
+salsa = "0.17.0-pre.2"
+smallvec = "1.13"
+text-edit = { git = "https://github.com/rust-analyzer/rust-analyzer", rev = "8a23314" }
+tracing = "0.1"
+vfs = { git = "https://github.com/rust-analyzer/rust-analyzer", rev = "8a23314" }
 
 [profile.dev]
 debug = 0

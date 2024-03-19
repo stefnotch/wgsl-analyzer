@@ -4,7 +4,7 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
-either = "1.6.1"
-itertools = "0.10.1"
-rowan = "0.15"
+either = { workspace = true }
+itertools = "0.12"
+rowan = { workspace = true }
 wgsl_parser = { path = "../wgsl_parser" }
