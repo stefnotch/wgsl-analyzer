@@ -419,6 +419,11 @@ fn module_item_to_def(
             let id = database.intern_type_alias(location);
             ModuleDef::TypeAlias(TypeAlias { id })
         },
+        ModuleItem::AssertStatment(assert_statement) => {
+            let location = Location::new(file_id, assert_statement);
+            let id = database.intern_type_alias(location);
+            ModuleDef::TypeAlias(TypeAlias { id })
+        },
     };
     smallvec::smallvec![definition]
 }
