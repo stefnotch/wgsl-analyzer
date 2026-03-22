@@ -83,19 +83,19 @@ fn install_client(
 
     // Package extension.
     if cfg!(unix) {
-        cmd!(shell, "npm --version")
+        cmd!(shell, "pnpm --version")
             .run()
-            .context("`npm` is required to build the VS Code plugin")?;
-        cmd!(shell, "npm ci").run()?;
+            .context("`pnpm` is required to build the VS Code plugin")?;
+        cmd!(shell, "pnpm install --frozen-lockfile").run()?;
 
-        cmd!(shell, "npm run package --scripts-prepend-node-path").run()?;
+        cmd!(shell, "pnpm run package").run()?;
     } else {
-        cmd!(shell, "cmd.exe /c npm --version")
+        cmd!(shell, "cmd.exe /c pnpm --version")
             .run()
-            .context("`npm` is required to build the VS Code plugin")?;
-        cmd!(shell, "cmd.exe /c npm ci").run()?;
+            .context("`pnpm` is required to build the VS Code plugin")?;
+        cmd!(shell, "cmd.exe /c pnpm install --frozen-lockfile").run()?;
 
-        cmd!(shell, "cmd.exe /c npm run package").run()?;
+        cmd!(shell, "cmd.exe /c pnpm run package").run()?;
     }
 
     // Find the appropriate VS Code binary.

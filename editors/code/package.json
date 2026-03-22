@@ -33,24 +33,24 @@
 	},
 	"engines": {
 		"vscode": "^1.110.0",
-		"npm": "^11.2.0"
+		"pnpm": "^10.32.0"
 	},
+	"packageManager": "pnpm@10.32.0",
 	"enabledApiProposals": [],
 	"scripts": {
 		"build-base": "esbuild ./src/main.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node --target=node22",
-		"build": "npm run build-base -- --sourcemap",
-		"check": "npx @biomejs/biome check",
-		"ci": "npx @biomejs/biome ci",
-		"format:check": "npx @biomejs/biome format",
-		"format": "npx @biomejs/biome format --write",
-		"fix": "npx @biomejs/biome format --write && npx @biomejs/biome check --write",
-		"lint": "npx @biomejs/biome lint",
-		"package": "vsce package -o wgsl-analyzer.vsix",
-		"pretest": "npm run typecheck && npm run build",
+		"build": "pnpm run build-base --sourcemap",
+		"check": "pnpm exec biome check",
+		"ci": "pnpm exec biome ci",
+		"format:check": "pnpm exec biome format",
+		"format": "pnpm exec biome format --write",
+		"fix": "pnpm exec biome format --write && pnpm exec biome check --write",
+		"lint": "pnpm exec biome lint",
+		"package": "pnpm run build-base --minify && vsce package --no-dependencies -o wgsl-analyzer.vsix",
+		"pretest": "pnpm run typecheck && pnpm run build",
 		"test": "node ./out/tests/runTests.js",
 		"typecheck": "tsc",
-		"vscode:prepublish": "npm run build-base -- --minify",
-		"watch": "npm run build-base -- --sourcemap --watch"
+		"watch": "pnpm run build-base --sourcemap --watch"
 	},
 	"dependencies": {
 		"@hpcc-js/wasm": "^2.33.1",
