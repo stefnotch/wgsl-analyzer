@@ -229,6 +229,12 @@ jobs:
       contents: write
     needs: ["dist", "dist-x86_64-unknown-linux-musl", "dist-dprint-plugin"]
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: ${{ env.FETCH_DEPTH }}
+          persist-credentials: false
+
       - name: Install Node.js
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
@@ -245,12 +251,6 @@ jobs:
       - run: echo "TAG=nightly" >> $GITHUB_ENV
         if: github.ref != 'refs/heads/release'
       - run: 'echo "TAG: $TAG"'
-
-      - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          fetch-depth: ${{ env.FETCH_DEPTH }}
-          persist-credentials: false
 
       - name: Set HEAD_SHA
         run: |
