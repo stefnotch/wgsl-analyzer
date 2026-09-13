@@ -59,3 +59,59 @@ fn empty_virtual_path_components() {
     let mut components = path.components();
     assert_eq!(components.next(), None);
 }
+
+#[test]
+fn as_path_virtual_path() {
+    let vfs_virtual_path = VfsPath::new_virtual_path(String::new());
+    let path = vfs_virtual_path.as_path();
+    assert_eq!(path, None);
+}
+
+#[test]
+fn as_path_path() {
+    let vfs_path = VfsPath::new_real_path("/".to_owned());
+    let path = vfs_path.as_path();
+    assert_eq!(path, Some(AbsPath::assert("/".into())));
+}
+
+#[test]
+fn as_virtual_path_virtual_path() {
+    let vfs_virtual_path = VfsPath::new_virtual_path(String::new());
+    let path = vfs_virtual_path.as_virtual_path();
+    assert_eq!(path, Some(&VirtualPath(String::new())));
+}
+
+#[test]
+fn as_virtual_path_path() {
+    let vfs_path = VfsPath::new_real_path("/".to_owned());
+    let path = vfs_path.as_virtual_path();
+    assert_eq!(path, None);
+}
+
+#[test]
+fn path_as_inner() {
+    let vfs_path = VfsPath::new_real_path("/".to_owned());
+    let path = vfs_path.as_inner();
+    assert_eq!(path, Either::Left(AbsPath::assert("/".into())));
+}
+
+#[test]
+fn virtual_path_as_inner() {
+    let vfs_virtual_path = VfsPath::new_virtual_path(String::new());
+    let path = vfs_virtual_path.as_inner();
+    assert_eq!(path, Either::Right(&VirtualPath(String::new())));
+}
+
+#[test]
+fn into_abs_path_virtual_path() {
+    let vfs_virtual_path = VfsPath::new_virtual_path(String::new());
+    let path = vfs_virtual_path.into_abs_path();
+    assert_eq!(path, None);
+}
+
+#[test]
+fn into_abs_path_path() {
+    let vfs_path = VfsPath::new_real_path("/".to_owned());
+    let path = vfs_path.into_abs_path();
+    assert_eq!(path, Some(AbsPathBuf::assert("/".into())));
+}
