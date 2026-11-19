@@ -1234,6 +1234,11 @@ ast_node! {
 
 impl HasAttributes for ContinueStatement {}
 
+// Empty statements have no attributes
+ast_node! {
+    EmptyStatement
+}
+
 ast_node! {
     DiscardStatement
 }
@@ -1327,7 +1332,7 @@ ast_enum! {
         AssertStatement,
         BreakStatement,
         ContinueStatement,
-        // Empty statements are ignored
+        EmptyStatement,
         DiscardStatement,
         ReturnStatement,
         ContinuingStatement,
