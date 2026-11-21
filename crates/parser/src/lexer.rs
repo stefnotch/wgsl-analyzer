@@ -92,7 +92,6 @@ pub fn is_ident(word: &str) -> bool {
 }
 
 /// Returns `true` if the given word is a WGSL keyword.
-#[expect(clippy::too_many_lines, reason = "just a big matches!")]
 fn is_keyword(word: &str) -> bool {
     matches!(
         word,

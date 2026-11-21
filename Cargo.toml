@@ -220,6 +220,10 @@ string_slice = "allow"
 missing_inline_in_public_items = "allow"
 # prefer get().expect() so that the reason is documented
 indexing_slicing = "allow"
+# not useful to enforce one style
+inline_trait_bounds = "allow"
+# must_use is used too often for this to be useful
+must_use_without_reason = "allow"
 
 # tombi: format.rules.table-keys-order.disabled = true
 [workspace.lints.rust]
